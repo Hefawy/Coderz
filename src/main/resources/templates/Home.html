@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+<h1>User List</h1>
+
+<!-- Display user data from the database -->
+<table border="1">
+    <tr>
+        <th>Email</th>
+        <th>Password</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.password}"></td>
+    </tr>
+</table>
+
+<!-- Form to save user data from the login page -->
+<form th:action="@{/app/users/saveUserFromLoginPage}" method="post">
+    <button type="submit">Save Data from Login Page</button>
+</form>
+
+<!-- Button to return to login page -->
+<form th:action="@{/app/login}" method="get">
+    <button type="submit">Return to Login Page</button>
+</form>
+</body>
+</html>
+
+
